@@ -8,6 +8,10 @@ fi
 echo "comment == $comment"
 cd /workspaces/77242606
 my_git=../ethan_cs50/CS50P
+pushd $my_git
+rm -rf scripts
+rm -rf pset*
+popd
 cp -fr scripts $my_git/.
 cp -fr pset* $my_git/.
 
