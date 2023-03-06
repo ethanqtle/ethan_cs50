@@ -3,7 +3,10 @@ from plates import is_valid
 
 # Discussion from https://edstem.org/us/courses/176/discussion/2645116
 
-def __run_cases(test_cases=[]):
+def __run_cases(test_cases):
+    """
+    Helper function to run test_cases from a list
+    """
     for plate, expected in test_cases:
         assert is_valid(plate) == expected
 
