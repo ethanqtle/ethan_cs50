@@ -3,28 +3,44 @@ from plates import is_valid
 
 # Discussion from https://edstem.org/us/courses/176/discussion/2645116
 
+def __run_cases(test_cases=[]):
+    for plate, expected in test_cases:
+        assert is_valid(plate) == expected
+
 def test_length():
-    assert is_valid("") == False
-    assert is_valid(" ") == False
-    assert is_valid("z") == False
-    assert is_valid("abcdefgh") == False
-    assert is_valid("ABCDEF") == True
+    test_cases = [
+        ("", False),
+        (" ", False),
+        ("z", False),
+        ("abcdefgh", False),
+        ("ABCDEF", True),
+    ]
+    __run_cases(test_cases)
 
 def test_punctuation():
-    assert is_valid("AA AA") == False
-    assert is_valid("!") == False
-    assert is_valid("AX@24") == False
+    test_cases = [
+        ("AA AA", False),
+        ("!", False),
+        ("AX@24", False),
+    ]
+    __run_cases(test_cases)
 
 def test_first_letters():
-    assert is_valid("01ABCD") == False
-    assert is_valid("12ABCD") == False
-    assert is_valid("a0abc") == False
-    assert is_valid("1ABCD") == False
-    assert is_valid("aaa123") == True
+    test_cases = [
+        ("01ABCD", False),
+        ("12ABCD", False),
+        ("a0abc", False),
+        ("1ABCD", False),
+        ("aaa123", True),
+    ]
+    __run_cases(test_cases)
 
 def test_numbers():
-    assert is_valid("AAA222") == True
-    assert is_valid("AAA22A") == False
-    assert is_valid("AA01AA") == False
-    assert is_valid("ABCDE0") == False
-    assert is_valid("C500") == False
+    test_cases = [
+        ("AAA222", True),
+        ("AAA22A", False),
+        ("AA01AA", False),
+        ("ABCDE0", False),
+        ("C500", False),
+    ]
+    __run_cases(test_cases)
